@@ -83,6 +83,22 @@ class Store {
       })
     })
   }
+
+  increaseCounter(code) {
+    this.setState({
+      ...this.state,
+      list: this.state.list.map((item) => {
+        if (item.code === code && item.selected) {
+          if (item.counter) {
+            return { ...item, counter: item.counter + 1 };
+          } else {
+            return { ...item, counter: 1 };
+          }
+        } else return item;
+      }),
+    });
+  }
 }
+
 
 export default Store;
